@@ -139,7 +139,9 @@ def main(options):
         repo=options.bitbucket_repo)
     options.bb_auth = None
     # Reads from a file that contains users' bitbucket-github username mapping
-    users_bb_gh_mapping = [line.rstrip() for line in open(''.join(options._map_users), "r")]
+
+    users_bb_gh_mapping =[];
+    #  [line.rstrip() for line in open(''.join(options._map_users), "r")]
     options.users = dict(user.split('=') for user in users_bb_gh_mapping)
     explicitly_mapped_users = dict(options.users)
     bb_repo_status = requests.head(bb_url).status_code
